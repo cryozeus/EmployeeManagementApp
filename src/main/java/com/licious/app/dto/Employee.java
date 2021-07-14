@@ -1,6 +1,4 @@
 package com.licious.app.dto;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -125,6 +123,7 @@ public class Employee {
         this.dept_id = dept_id;
     }
 
+    //Constructors
     public Employee(int emplID, String firstName, String lastName,
                     String designation, Date dob, Date joining_date,
                     String address, int mobile, String email,

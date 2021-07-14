@@ -29,8 +29,8 @@ public class Main {
                 String lastName = br.readLine();
                 System.out.println("Enter Employee Designation: ");
                 String designation  = br.readLine();
-                System.out.println("Enter Employee Name: ");
-                String firstName = br.readLine();
+                System.out.println("Enter Employee DOB: ");
+                String dob = br.readLine();
                 System.out.println("Enter Student Name: ");
                 String firstName = br.readLine();
 
