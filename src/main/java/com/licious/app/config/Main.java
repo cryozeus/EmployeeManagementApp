@@ -31,9 +31,22 @@ public class Main {
                 String designation  = br.readLine();
                 System.out.println("Enter Employee DOB: ");
                 String dob = br.readLine();
-                System.out.println("Enter Student Name: ");
-                String firstName = br.readLine();
-
+                System.out.println("Enter Employee joining date: ");
+                String joining_date = br.readLine();
+                System.out.println("Enter Employee Address: ");
+                String address = br.readLine();
+                System.out.println("Enter Employee mobile: ");
+                String mobile = br.readLine();
+                System.out.println("Enter Employee email: ");
+                String email = br.readLine();
+                System.out.println("Enter last updated date: ");
+                String last_updated_date = br.readLine();
+                System.out.println("Enter last updated by: ");
+                String last_updated_by = br.readLine();
+                System.out.println("Enter Employee salary: ");
+                Integer salary = br.readLine();
+                System.out.println("Enter Employee's Dept. ID: ");
+                Integer dept_id = br.readLine();
             }
             else if(c == 2) {
                 //delete employee
