@@ -1,44 +1,29 @@
 package com.licious.app.config;
 
-import static java.sql.DriverManager.registerDriver;
+import com.licious.app.utils.Constants;
 
-import java.io.PrintWriter;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.DriverPropertyInfo;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.SQLFeatureNotSupportedException;
-import java.sql.Statement;
-import java.util.logging.Logger;
-import java.util.Properties;
+import java.sql.*;
+
+import java.sql.DriverManager;
 
 //Database operations
-
-class DatabaseConnection {
-
-
-
-}
 public final class DbUtils {
 
     //Default Constructor
     public DbUtils() {
     }
 
-    private static Connection con = null;
+    private static Connection conn = null;
 
     static
     {
-        String url = "jdbc:mysql:// localhost:3306/org";
-        String user = "root";
-        String pass = "root";
+
+        String url = Constants.connectionUrl;
+        String user = Constants.username;
+        String pass = Constants.password;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection(url, user, pass);
+            conn = DriverManager.getConnection(url, user, pass);
         }
         catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -46,7 +31,7 @@ public final class DbUtils {
     }
     public static Connection getConnection()
     {
-        return con;
+        return conn;
     }
 
 
@@ -75,10 +60,6 @@ public final class DbUtils {
                 conn.close();
             }
         }
-    }
-
-    public static boolean loadDriver(String driverClassName) {
-        return loadDriver(DbUtils.class.getClassLoader(), driverClassName);
     }
 
     public static void rollbackConnection(Connection conn) throws SQLException {

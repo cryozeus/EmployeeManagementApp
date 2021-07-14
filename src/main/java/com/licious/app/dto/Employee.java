@@ -11,11 +11,11 @@ public class Employee {
     private Date dob;
     private Date joining_date;
     private String address;
-    private int mobile;
+    private long mobile;
     private String email;
     private Date last_updated_date;
     private String last_updated_by;
-    private int salary;
+    private long salary;
     private int dept_id;
 
     /*INITIALIZE GETTER AND SETTER*/
@@ -75,7 +75,7 @@ public class Employee {
         this.address = address;
     }
 
-    public int getMobile() {
+    public long getMobile() {
         return mobile;
     }
 
@@ -107,7 +107,7 @@ public class Employee {
         this.last_updated_by = last_updated_by;
     }
 
-    public int getSalary() {
+    public long getSalary() {
         return salary;
     }
 
@@ -124,6 +124,10 @@ public class Employee {
     }
 
     //Constructors
+
+    public Employee() {
+    }
+
     public Employee(int emplID, String firstName, String lastName,
                     String designation, Date dob, Date joining_date,
                     String address, int mobile, String email,
@@ -162,9 +166,6 @@ public class Employee {
         this.dept_id = dept_id;
     }
 
-    public Employee() {
-        super();
-    }
 
     @Override
     public String toString() {
