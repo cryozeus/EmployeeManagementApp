@@ -1,4 +1,4 @@
-package com.licious.app.config;
+package com.licious.app;
 
 import java.io.BufferedReader;
 import java.io.IOException;
