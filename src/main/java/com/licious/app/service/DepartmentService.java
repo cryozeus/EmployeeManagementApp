@@ -15,8 +15,11 @@ public interface DepartmentService<D> {
             throws SQLException;
     public List<Department> getDepartments()
             throws SQLException;
-    public void updateDepartment(Department department)
-            throws SQLException;
+
+    public static int updateDepartment(Department department)
+            throws SQLException {
+        return 0;
+    }
 }
 
 
