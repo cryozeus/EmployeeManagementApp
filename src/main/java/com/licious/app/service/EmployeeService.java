@@ -6,7 +6,7 @@ import java.util.List;
 import com.licious.app.dto.Employee;
 
 //Data Access Object
-public interface EmployeeService {
+public interface EmployeeService<E> {
 
     public int addEmployee(Employee emp)
         throws SQLException;

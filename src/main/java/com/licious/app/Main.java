@@ -4,12 +4,22 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import com.licious.app.dto.Employee;
+import com.licious.app.dto.Department;
+import com.licious.app.serviceImpl.EmployeeServiceImpl;
+import com.licious.app.serviceImpl.DepartmentServiceImpl;
+
+
 public class Main {
 
     public static void main(String[] args) throws IOException {
         System.out.println("Welcome to Employee Management Application");
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        DepartmentServiceImpl departmentService = new DepartmentServiceImpl();
+        EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
+
 
         while(true)
         {
@@ -20,6 +30,8 @@ public class Main {
             System.out.println("PRESS 5 to EXIT");
 
             int c = Integer.parseInt(br.readLine());
+
+
 
             switch (c) {
                 case 1:
