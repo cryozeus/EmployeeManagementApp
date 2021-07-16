@@ -4,7 +4,10 @@ import com.licious.app.config.DbUtils;
 import com.licious.app.dto.Department;
 import com.licious.app.service.DepartmentService;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 public abstract class DepartmentServiceImpl implements DepartmentService<Department> {
@@ -17,9 +20,9 @@ public abstract class DepartmentServiceImpl implements DepartmentService<Departm
             PreparedStatement pps = conn.prepareStatement("INSERT INTO dept VALUE(? ? ? ? ? ?);");
             pps.setInt(1, department.getId());
             pps.setString(2, department.getDeptName());
-            pps.setDate(3, department.getCreatedDate());
+            pps.setDate(3, new java.sql.Date(department.getCreatedDate().getTime()));
             pps.setString(4, department.getEmail());
-            pps.setDate(5, (Date) department.getLastUpdatedDate());
+            pps.setDate(5, new java.sql.Date(department.getLastUpdatedDate().getTime()));
             pps.setString(6, department.getLastUpdatedBy());
             return pps.executeUpdate();
             // WHERE TO close connection?
@@ -30,7 +33,7 @@ public abstract class DepartmentServiceImpl implements DepartmentService<Departm
         }
     }
 
-    public static ResultSet updateDepartment(Department dept) {
+    public static int updateDepartment(Department dept) {
 
         try{
             Connection conn = DbUtils.getConnection();
@@ -41,15 +44,14 @@ public abstract class DepartmentServiceImpl implements DepartmentService<Departm
             pps.setString(4, dept.getEmail());
             pps.setDate(5,  new java.sql.Date(dept.getLastUpdatedDate().getTime()));
             pps.setString(6, dept.getLastUpdatedBy());
-            return pps.executeUpdate();
-
+            pps.executeQuery();
+            DbUtils.closeConnection(conn);
+            return 0;
 
 
         }catch(Exception e) {
             e.printStackTrace();
-
-        } finally {
-            DbUtils.closeConnection();
+            return 1;
         }
     }
 
@@ -63,7 +65,7 @@ public abstract class DepartmentServiceImpl implements DepartmentService<Departm
             ResultSet rs = pps.executeQuery(sqlIn);
 
             while(rs.next()){
-                int id = rs.getInt(1);
+                id = rs.getInt(1);
                 String dept_name = rs.getString(2);
                 Date created_date = rs.getDate(3);
                 String email = rs.getString(4);

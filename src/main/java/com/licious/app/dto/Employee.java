@@ -13,8 +13,8 @@ public class Employee {
     private String address;
     private long mobile;
     private String email;
-    private Date last_updated_date;
-    private String last_updated_by;
+    private Date lastUpdatedDate;
+    private String lastUpdatedBy;
     private long salary;
     private int dept_id;
 
@@ -63,8 +63,8 @@ public class Employee {
         return joiningDate;
     }
 
-    public void setJoining_date(Date joining_date) {
-        this.joining_date = joining_date;
+    public void setJoining_date(Date joiningDate) {
+        this.joiningDate = joiningDate;
     }
 
     public String getAddress() {
@@ -91,20 +91,20 @@ public class Employee {
         this.email = email;
     }
 
-    public Date getLast_updated_date() {
-        return last_updated_date;
+    public Date getLastUpdatedDate() {
+        return lastUpdatedDate;
     }
 
-    public void setLast_updated_date(Date last_updated_date) {
-        this.last_updated_date = last_updated_date;
+    public void setLastUpdatedDate(Date last_updated_date) {
+        this.lastUpdatedDate = lastUpdatedDate;
     }
 
-    public String getLast_updated_by() {
-        return last_updated_by;
+    public String getLastUpdatedBy() {
+        return lastUpdatedBy;
     }
 
-    public void setLast_updated_by(String last_updated_by) {
-        this.last_updated_by = last_updated_by;
+    public void setLastUpdatedBy(String lastUpdatedBy) {
+        this.lastUpdatedBy = this.lastUpdatedBy;
     }
 
     public long getSalary() {
@@ -131,37 +131,37 @@ public class Employee {
     public Employee(int emplID, String firstName, String lastName,
                     String designation, Date dob, Date joining_date,
                     String address, int mobile, String email,
-                    Date last_updated_date, String last_updated_by,
+                    Date lastUpdatedDate, String lastUpdatedBy,
                     int salary, int dept_id) {
         this.emplID = emplID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.designation = designation;
         this.dob = dob;
-        this.joining_date = joining_date;
+        this.joiningDate = joining_date;
         this.address = address;
         this.mobile = mobile;
         this.email = email;
-        this.last_updated_date = last_updated_date;
-        this.last_updated_by = last_updated_by;
+        this.lastUpdatedDate = lastUpdatedDate;
+        this.lastUpdatedBy = lastUpdatedBy;
         this.salary = salary;
         this.dept_id = dept_id;
     }
 
     public Employee(String firstName, String lastName, String designation,
-                    Date dob, Date joining_date, String address, int mobile,
-                    String email, Date last_updated_date, String last_updated_by,
+                    Date dob, Date joiningDate, String address, int mobile,
+                    String email, Date lastUpdatedDate, String lastUpdatedBy,
                     int salary, int dept_id) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.designation = designation;
         this.dob = dob;
-        this.joining_date = joining_date;
+        this.joiningDate = joiningDate;
         this.address = address;
         this.mobile = mobile;
         this.email = email;
-        this.last_updated_date = last_updated_date;
-        this.last_updated_by = last_updated_by;
+        this.lastUpdatedDate = lastUpdatedDate;
+        this.lastUpdatedBy = lastUpdatedBy;
         this.salary = salary;
         this.dept_id = dept_id;
     }
@@ -175,12 +175,12 @@ public class Employee {
                 ", lastName='" + lastName + '\'' +
                 ", designation='" + designation + '\'' +
                 ", dob=" + dob +
-                ", joining_date=" + joining_date +
+                ", joining_date=" + joiningDate +
                 ", address='" + address + '\'' +
                 ", mobile=" + mobile +
                 ", email='" + email + '\'' +
-                ", last_updated_date=" + last_updated_date +
-                ", last_updated_by='" + last_updated_by + '\'' +
+                ", last_updated_date=" + lastUpdatedDate +
+                ", last_updated_by='" + lastUpdatedBy + '\'' +
                 ", salary=" + salary +
                 ", dept_id=" + dept_id +
                 '}';

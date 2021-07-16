@@ -10,13 +10,13 @@ public interface EmployeeService {
 
     public int addEmployee(Employee emp)
         throws SQLException;
-    public void deleteEmployee(int id)
+    public int deleteEmployee(int id)
         throws SQLException;
     public Employee getEmployee(int id)
         throws SQLException;
     public List<Employee> getEmployees()
         throws SQLException;
-    public void updateEmployee(Employee emp)
+    public int updateEmployee(Employee emp)
         throws SQLException;
 }
 

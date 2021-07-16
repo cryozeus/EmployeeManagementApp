@@ -1,8 +1,10 @@
 package com.licious.app;
 
+import java.util.List;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
 
 import com.licious.app.dto.Employee;
 import com.licious.app.dto.Department;
@@ -14,15 +16,41 @@ import com.licious.app.serviceImpl.DepartmentServiceImpl;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws SQLException {
         System.out.println("Welcome to Employee Management Application");
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        DepartmentServiceImpl departmentService = new DepartmentServiceImpl();
+        // DepartmentServiceImpl departmentService = new DepartmentServiceImpl();
         EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
 
+        Employee emp = new Employee();
+        emp.setFirstName("AB");
+        emp.setLastName("CD");
+        emp.setEmail("abcd@licious.com");
+        emp.setDept_id(7);
+        EmployeeServiceImpl empDto = new EmployeeServiceImpl();
 
+        //add employee:
+        empDto.addEmployee(emp);
+
+        //read employee:
+        Employee e = empDto.getEmployee(1);
+
+        //read All
+        List<Employee> employeeList = empDto.getEmployees();
+        for(Employee allemp : employeeList)
+            System.out.println(allemp);
+
+        //update
+        Employee tempEmpl = empDto.getEmployees(1);
+        tempEmpl.setAddress("Someplace");
+        empDto.updateEmployee(tempEmpl);
+
+        //delete employee
+        empDto.deleteEmployee(1);
+
+        /*
         while(true)
         {
             System.out.println("PRESS 1 to ADD Employee");
@@ -42,49 +70,26 @@ public class Main {
 
                     //pass fields to method below?
                     int addOutput = EmployeeServiceImpl.addEmployee();
-                    if(addOutput)
+                    if(addOutput==0)
                         System.out.println("Added Employee succesfully");
                     else
                         System.out.println("Add Employee Unsuccessful");
 
-                    /*
-                    System.out.println("Enter Employee First Name: ");
-                    String firstName = br.readLine();
-                    System.out.println("Enter Employee Last Name: ");
-                    String lastName = br.readLine();
-                    System.out.println("Enter Employee Designation: ");
-                    String designation  = br.readLine();
-                    System.out.println("Enter Employee DOB: ");
-                    String dob = br.readLine();
-                    System.out.println("Enter Employee joining date: ");
-                    String joining_date = br.readLine();
-                    System.out.println("Enter Employee Address: ");
-                    String address = br.readLine();
-                    System.out.println("Enter Employee mobile: ");
-                    String mobile = br.readLine();
-                    System.out.println("Enter Employee email: ");
-                    String email = br.readLine();
-                    System.out.println("Enter last updated date: ");
-                    String last_updated_date = br.readLine();
-                    System.out.println("Enter last updated by: ");
-                    String last_updated_by = br.readLine();
-                    System.out.println("Enter Employee salary: ");
-                    Integer salary = br.readLine();
-                    System.out.println("Enter Employee's Dept. ID: ");
-                    Integer dept_id = br.readLine();
-                    break;
-                    */
-
                 case 2:
                     //delete employee
+                    int delOutput = EmployeeServiceImpl.deleteEmployee();
+                    if(delOutput==0)
+                        System.out.println("Deleted Employee succesfully");
+                    else
+                        System.out.println("Delete Employee Unsuccessful");
                 case 3:
                     //update employee
 
                     //pass fields to method below?
                     int updateOutput = EmployeeServiceImpl.updateEmployee();
-                    if(updateOutput) {
+                    if(updateOutput==0)
                         System.out.println("Updated Employee succesfully");
-                    } else {
+                    else {
                         System.out.println("Update Employee Unsuccessful");
                     }
 
@@ -103,9 +108,9 @@ public class Main {
 
                 case 5:
                     //getEmployeeById
-
-                    int getOutput = EmployeeService.getEmployee(int id);
-                    if(getOutput)
+                    int id = Integer.parseInt(br.readLine());
+                    int getOutput = EmployeeService.getEmployee(id);
+                    if(getOutput!=0)
                         System.out.println("Fetched Employee succesfully");
                     else
                         System.out.println("Get Employee Unsuccessful");
@@ -118,7 +123,10 @@ public class Main {
             }
 
 
+
         }
+
+         */
     }
 }
 

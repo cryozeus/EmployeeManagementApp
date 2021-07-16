@@ -34,7 +34,7 @@ public final class DbUtils {
     }
 
 
-    public static void closeConnection(Connection con) throws SQLException{
+    public static void closeConnection(Connection conn) throws SQLException{
         if(conn != null)
             conn.close();
     }
