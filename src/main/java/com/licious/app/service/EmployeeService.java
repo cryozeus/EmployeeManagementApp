@@ -6,7 +6,7 @@ import java.util.List;
 import com.licious.app.dto.Employee;
 
 //Data Access Object
-public interface EmployeeService<E> {
+public interface EmployeeService {
 
     public int addEmployee(Employee emp)
         throws SQLException;
@@ -19,3 +19,4 @@ public interface EmployeeService<E> {
     public void updateEmployee(Employee emp)
         throws SQLException;
 }
+

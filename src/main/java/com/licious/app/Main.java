@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 
 import com.licious.app.dto.Employee;
 import com.licious.app.dto.Department;
+import com.licious.app.service.DepartmentService;
+import com.licious.app.service.EmployeeService;
 import com.licious.app.serviceImpl.EmployeeServiceImpl;
 import com.licious.app.serviceImpl.DepartmentServiceImpl;
 
@@ -26,7 +28,8 @@ public class Main {
             System.out.println("PRESS 1 to ADD Employee");
             System.out.println("PRESS 2 to DELETE Employee");
             System.out.println("PRESS 3 to UPDATE Employee");
-            System.out.println("PRESS 4 to DISPLAY Employee");
+            System.out.println("PRESS 4 to DISPLAY Employees");
+            System.out.println("PRESS 5 to DISPLAY Employee by ID");
             System.out.println("PRESS 5 to EXIT");
 
             int c = Integer.parseInt(br.readLine());
@@ -36,6 +39,15 @@ public class Main {
             switch (c) {
                 case 1:
                     //add employee
+
+                    //pass fields to method below?
+                    int addOutput = EmployeeServiceImpl.addEmployee();
+                    if(addOutput)
+                        System.out.println("Added Employee succesfully");
+                    else
+                        System.out.println("Add Employee Unsuccessful");
+
+                    /*
                     System.out.println("Enter Employee First Name: ");
                     String firstName = br.readLine();
                     System.out.println("Enter Employee Last Name: ");
@@ -61,14 +73,44 @@ public class Main {
                     System.out.println("Enter Employee's Dept. ID: ");
                     Integer dept_id = br.readLine();
                     break;
+                    */
 
                 case 2:
                     //delete employee
                 case 3:
                     //update employee
+
+                    //pass fields to method below?
+                    int updateOutput = EmployeeServiceImpl.updateEmployee();
+                    if(updateOutput) {
+                        System.out.println("Updated Employee succesfully");
+                    } else {
+                        System.out.println("Update Employee Unsuccessful");
+                    }
+
                 case 4:
-                    //display employee
+                    //display employees
+
+                    //pass fields to method below?
+                    boolean displayOutput = EmployeeServiceImpl.getEmployees();
+                    if(displayOutput) {
+                        System.out.println("Fetched Employees succesfully");
+                    }
+                    else {
+                        System.out.println("Get Employees Unsuccessful");
+                    }
+
+
                 case 5:
+                    //getEmployeeById
+
+                    int getOutput = EmployeeService.getEmployee(int id);
+                    if(getOutput)
+                        System.out.println("Fetched Employee succesfully");
+                    else
+                        System.out.println("Get Employee Unsuccessful");
+
+                case 6:
                     //exit
                 default:
 

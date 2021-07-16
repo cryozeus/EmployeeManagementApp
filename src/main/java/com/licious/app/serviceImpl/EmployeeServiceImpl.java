@@ -5,13 +5,14 @@ import com.licious.app.dto.Employee;
 import com.licious.app.service.EmployeeService;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public abstract class EmployeeServiceImpl implements EmployeeService<Employee> {
+public class EmployeeServiceImpl implements EmployeeService {
     //CRUD methods
 
-    public static int insert(Employee employee) {
+    public static int addEmployee() {
 
         try {
             Connection conn = DbUtils.getConnection();
@@ -20,12 +21,12 @@ public abstract class EmployeeServiceImpl implements EmployeeService<Employee> {
             pps.setString(2, employee.getFirstName());
             pps.setString(3, employee.getLastName());
             pps.setString(4, employee.getDesignation());
-            pps.setDate(5, (Date) employee.getDob());
-            pps.setDate(6, (Date) employee.getJoining_date());
+            pps.setDate(5, new java.sql.Date(employee.getDob().getTime());
+            pps.setDate(6, new java.sql.Date(employee.getJoiningDate().getTime());
             pps.setString(7, employee.getAddress());
             pps.setLong(8, employee.getMobile());
             pps.setString(9, employee.getEmail());
-            pps.setDate(10, (Date) employee.getLast_updated_date());
+            pps.setDate(10, new java.sql.Date(employee.getLastUpdatedDate().getTime()));
             pps.setString(11, employee.getLast_updated_by());
             pps.setLong(12, employee.getSalary());
             pps.setInt(13, employee.getDept_id());
@@ -36,7 +37,18 @@ public abstract class EmployeeServiceImpl implements EmployeeService<Employee> {
         }
     }
 
-    public static int update(Employee employee) {
+    @Override
+    public void deleteEmployee(int id) throws SQLException {
+
+    }
+
+    @Override
+    public Employee getEmployee(int id) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public static int updateEmployee(Employee employee) {
 
         try {
             Connection conn = DbUtils.getConnection();
@@ -46,12 +58,12 @@ public abstract class EmployeeServiceImpl implements EmployeeService<Employee> {
             pps.setString(2, employee.getFirstName());
             pps.setString(3, employee.getLastName());
             pps.setString(4, employee.getDesignation());
-            pps.setDate(5, (Date) employee.getDob());
-            pps.setDate(6, (Date) employee.getJoining_date());
+            pps.setDate(5, new java.sql.Date(employee.getDob().getTime());
+            pps.setDate(6, new java.sql.Date(employee.getJoiningDate().getTime());
             pps.setString(7, employee.getAddress());
             pps.setLong(8, employee.getMobile());
             pps.setString(9, employee.getEmail());
-            pps.setDate(10, (Date) employee.getLast_updated_date());
+            pps.setDate(10, new java.sql.Date(employee.getLast_updated_date().getTime());
             pps.setString(11, employee.getLast_updated_by());
             pps.setLong(12, employee.getSalary());
             pps.setInt(13, employee.getDept_id());
@@ -63,8 +75,8 @@ public abstract class EmployeeServiceImpl implements EmployeeService<Employee> {
 
     }
 
-
-    public static void getEmployeeById(int id, Connection conn) {
+    @Override
+    public static void getEmployee(int id, Connection conn) {
         PreparedStatement pps = null;
         String sqlIn = "SELECT * FROM Employee WHERE id="+id;
 
@@ -93,6 +105,17 @@ public abstract class EmployeeServiceImpl implements EmployeeService<Employee> {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+
+    public List<Employee> getEmployees() throws SQLException {
+
+        String sqlIn = "SELECT * FROM Employee;";
+        Connection conn = DbUtils.getConnection();
+        PreparedStatement pps = conn.prepareStatement(sqlIn);
+        ResultSet rs = pps.executeQuery();
+        List<Employee> employeeList = new ArrayList<>();
+
     }
 
 }

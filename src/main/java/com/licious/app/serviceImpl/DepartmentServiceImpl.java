@@ -16,11 +16,11 @@ public abstract class DepartmentServiceImpl implements DepartmentService<Departm
             Connection conn = DbUtils.getConnection();
             PreparedStatement pps = conn.prepareStatement("INSERT INTO dept VALUE(? ? ? ? ? ?);");
             pps.setInt(1, department.getId());
-            pps.setString(2, department.getDept_name());
-            pps.setDate(3, department.getCreated_date());
+            pps.setString(2, department.getDeptName());
+            pps.setDate(3, department.getCreatedDate());
             pps.setString(4, department.getEmail());
-            pps.setDate(5, (Date) department.getLast_updated_date());
-            pps.setString(6, department.getLast_updated_by());
+            pps.setDate(5, (Date) department.getLastUpdatedDate());
+            pps.setString(6, department.getLastUpdatedBy());
             return pps.executeUpdate();
             // WHERE TO close connection?
             // DbUtils.closeConnection();
@@ -30,24 +30,26 @@ public abstract class DepartmentServiceImpl implements DepartmentService<Departm
         }
     }
 
-    public static ResultSet updateDepartment(Department department) {
+    public static ResultSet updateDepartment(Department dept) {
 
         try{
             Connection conn = DbUtils.getConnection();
             PreparedStatement pps = conn.prepareStatement("UPDATE dept SET id=?, dept_name=?, created_date=?, email=?, last_updated_date=?, last_updated_by=?;");
-            pps.setInt(1, department.getId());
-            pps.setString(2, department.getDept_name());
-            pps.setDate(3, (Date) department.getCreated_date());
-            pps.setString(4, department.getEmail());
-            pps.setDate(5, (Date) department.getLast_updated_date());
-            pps.setString(6, department.getLast_updated_by());
+            pps.setInt(1, dept.getId());
+            pps.setString(2, dept.getDeptName());
+            pps.setDate(3, new java.sql.Date(dept.getCreatedDate().getTime()));
+            pps.setString(4, dept.getEmail());
+            pps.setDate(5,  new java.sql.Date(dept.getLastUpdatedDate().getTime()));
+            pps.setString(6, dept.getLastUpdatedBy());
             return pps.executeUpdate();
-            // conn.close(); ???
+
 
 
         }catch(Exception e) {
             e.printStackTrace();
-            return 0;
+
+        } finally {
+            DbUtils.closeConnection();
         }
     }
 

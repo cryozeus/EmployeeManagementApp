@@ -9,7 +9,7 @@ public class Employee {
     private String lastName;
     private String designation;
     private Date dob;
-    private Date joining_date;
+    private Date joiningDate;
     private String address;
     private long mobile;
     private String email;
@@ -59,8 +59,8 @@ public class Employee {
         this.dob = dob;
     }
 
-    public Date getJoining_date() {
-        return joining_date;
+    public Date getJoiningDate() {
+        return joiningDate;
     }
 
     public void setJoining_date(Date joining_date) {

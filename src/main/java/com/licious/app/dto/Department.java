@@ -1,25 +1,23 @@
 package com.licious.app.dto;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Department {
     private int id;
-    private String dept_name;
-    private Date created_date;
+    private String deptName;
+    private Date createdDate;
     private String email;
-    private Date last_updated_date;
-    private String last_updated_by;
+    private Date lastUpdatedDate;
+    private String lastUpdatedBy;
 
     /*Constructor*/
-    public Department(int id, String dept_name, Date created_date, String email, Date last_updated_date, String last_updated_by) {
+    public Department(int id, String deptName, Date createdDate, String email, Date lastUpdatedDate, String lastUpdatedBy) {
         this.id = id;
-        this.dept_name = dept_name;
-        this.created_date = created_date;
+        this.deptName = deptName;
+        this.createdDate = createdDate;
         this.email = email;
-        this.last_updated_date = last_updated_date;
-        this.last_updated_by = last_updated_by;
+        this.lastUpdatedDate = lastUpdatedDate;
+        this.lastUpdatedBy = lastUpdatedBy;
     }
 
     /*Getter and Setter*/
@@ -32,20 +30,20 @@ public class Department {
         this.id = id;
     }
 
-    public String getDept_name() {
-        return dept_name;
+    public String getDeptName() {
+        return deptName;
     }
 
-    public void setDept_name(String dept_name) {
-        this.dept_name = dept_name;
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
     }
 
-    public Date getCreated_date() {
-        return created_date;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreated_date(Date created_date) {
-        this.created_date = created_date;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
     public String getEmail() {
@@ -56,19 +54,19 @@ public class Department {
         this.email = email;
     }
 
-    public Date getLast_updated_date() {
-        return last_updated_date;
+    public Date getLastUpdatedDate() {
+        return lastUpdatedDate;
     }
 
-    public void setLast_updated_date(Date last_updated_date) {
-        this.last_updated_date = last_updated_date;
+    public void setLastUpdatedDate(Date lastUpdatedDate) {
+        this.lastUpdatedDate = lastUpdatedDate;
     }
 
-    public String getLast_updated_by() {
-        return last_updated_by;
+    public String getLastUpdatedBy() {
+        return lastUpdatedBy;
     }
 
-    public void setLast_updated_by(String last_updated_by) {
-        this.last_updated_by = last_updated_by;
+    public void setLastUpdatedBy(String lastUpdatedBy) {
+        this.lastUpdatedBy = lastUpdatedBy;
     }
 }
