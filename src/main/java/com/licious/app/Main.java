@@ -2,16 +2,11 @@ package com.licious.app;
 
 import java.util.List;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.SQLException;
 
 import com.licious.app.dto.Employee;
-import com.licious.app.dto.Department;
-import com.licious.app.service.DepartmentService;
-import com.licious.app.service.EmployeeService;
 import com.licious.app.serviceImpl.EmployeeServiceImpl;
-import com.licious.app.serviceImpl.DepartmentServiceImpl;
 
 
 public class Main {
@@ -28,8 +23,9 @@ public class Main {
         emp.setFirstName("AB");
         emp.setLastName("CD");
         emp.setEmail("abcd@licious.com");
-        emp.setDept_id(7);
+        emp.setDeptID(7);
         EmployeeServiceImpl empDto = new EmployeeServiceImpl();
+
 
         //add employee:
         empDto.addEmployee(emp);
@@ -43,7 +39,7 @@ public class Main {
             System.out.println(allemp);
 
         //update
-        Employee tempEmpl = empDto.getEmployees(1);
+        Employee tempEmpl = empDto.getEmployee(1);
         tempEmpl.setAddress("Someplace");
         empDto.updateEmployee(tempEmpl);
 

@@ -5,7 +5,9 @@ import com.licious.app.dto.Employee;
 import com.licious.app.service.EmployeeService;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -28,7 +30,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             pps.setDate(10, new java.sql.Date(emp.getLastUpdatedDate().getTime()));
             pps.setString(11, emp.getLastUpdatedBy());
             pps.setLong(12, emp.getSalary());
-            pps.setInt(13, emp.getDept_id());
+            pps.setInt(13, emp.getDeptID());
             DbUtils.closeConnection(conn);
             int i = pps.executeUpdate();
             return i;
@@ -92,19 +94,19 @@ public class EmployeeServiceImpl implements EmployeeService {
                 System.out.println(salary);
                 System.out.println(deptID);
                 DbUtils.closeConnection(conn);
-                return Employee;
+                return new Employee();
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return 1;
+        return null;
     }
 
     @Override
-    public int updateEmployee(Employee employee) {
-
+    public int updateEmployee(Employee employee) throws SQLException {
+        Connection conn=null;
         try {
-            Connection conn = DbUtils.getConnection();
+            conn = DbUtils.getConnection();
             PreparedStatement pps = conn.prepareStatement("UPDATE Employee SET id=?, first_name=?, last_name=?, designation=?, " +
                     "dob=?, joining_date=?, address=?, mobile=?, email=?, last_updated_date=?, last_updated_by=?, salary=?, dept_id=?;");
             pps.setInt(1, employee.getEmplID());
@@ -119,22 +121,23 @@ public class EmployeeServiceImpl implements EmployeeService {
             pps.setDate(10, new java.sql.Date(employee.getLastUpdatedDate().getTime()));
             pps.setString(11, employee.getLastUpdatedBy());
             pps.setLong(12, employee.getSalary());
-            pps.setInt(13, employee.getDept_id());
+            pps.setInt(13, employee.getDeptID());;
             return pps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
         } finally {
-
+            DbUtils.closeConnection(conn);
         }
 
     }
-
-    public Employee getEmployees(int id) throws SQLException {
-
+    @Override
+    public List<Employee> getEmployees() throws SQLException {
+        List<Employee> employeeList = new ArrayList<>();
+        Connection conn = null;
         try{
             String sqlIn = "SELECT * FROM Employee;";
-            Connection conn = DbUtils.getConnection();
+            conn = DbUtils.getConnection();
             PreparedStatement pps = null;
             pps = conn.prepareStatement(sqlIn);
             ResultSet rs = pps.executeQuery(sqlIn);
@@ -153,27 +156,16 @@ public class EmployeeServiceImpl implements EmployeeService {
                 String lastUpdatedBy = rs.getString(11);
                 long salary = rs.getLong(12);
                 int deptID = rs.getInt(13);
+                //add fields below
+                employeeList.add(new Employee(emplID, firstName, lastName, designation, dob, joiningDate, address, mobile, email, lastUpdatedDate, lastUpdatedBy, salary, deptID));
 
-                System.out.println(emplID);
-                System.out.println(firstName);
-                System.out.print(" "+lastName);
-                System.out.println(designation);
-                System.out.println(dob);
-                System.out.println(joiningDate);
-                System.out.println(address);
-                System.out.println(mobile);
-                System.out.println(email);
-                System.out.println(lastUpdatedDate);
-                System.out.println(lastUpdatedBy);
-                System.out.println(salary);
-                System.out.println(deptID);
-                DbUtils.closeConnection(conn);
-                return 0;
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DbUtils.closeConnection(conn);
         }
-        return 1;
+        return employeeList;
     }
 
 

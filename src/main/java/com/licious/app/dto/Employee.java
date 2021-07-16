@@ -16,7 +16,10 @@ public class Employee {
     private Date lastUpdatedDate;
     private String lastUpdatedBy;
     private long salary;
-    private int dept_id;
+    private int deptID;
+
+
+
 
     /*INITIALIZE GETTER AND SETTER*/
     public int getEmplID() {
@@ -63,7 +66,7 @@ public class Employee {
         return joiningDate;
     }
 
-    public void setJoining_date(Date joiningDate) {
+    public void setJoiningDate(Date joiningDate) {
         this.joiningDate = joiningDate;
     }
 
@@ -95,7 +98,7 @@ public class Employee {
         return lastUpdatedDate;
     }
 
-    public void setLastUpdatedDate(Date last_updated_date) {
+    public void setLastUpdatedDate(Date lastUpdatedDate) {
         this.lastUpdatedDate = lastUpdatedDate;
     }
 
@@ -115,12 +118,12 @@ public class Employee {
         this.salary = salary;
     }
 
-    public int getDept_id() {
-        return dept_id;
+    public int getDeptID() {
+        return deptID;
     }
 
-    public void setDept_id(int dept_id) {
-        this.dept_id = dept_id;
+    public void setDeptID(int deptID) {
+        this.deptID = deptID;
     }
 
     //Constructors
@@ -130,9 +133,9 @@ public class Employee {
 
     public Employee(int emplID, String firstName, String lastName,
                     String designation, Date dob, Date joining_date,
-                    String address, int mobile, String email,
+                    String address, long mobile, String email,
                     Date lastUpdatedDate, String lastUpdatedBy,
-                    int salary, int dept_id) {
+                    long salary, int deptID) {
         this.emplID = emplID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -145,13 +148,13 @@ public class Employee {
         this.lastUpdatedDate = lastUpdatedDate;
         this.lastUpdatedBy = lastUpdatedBy;
         this.salary = salary;
-        this.dept_id = dept_id;
+        this.deptID = deptID;
     }
 
     public Employee(String firstName, String lastName, String designation,
                     Date dob, Date joiningDate, String address, int mobile,
                     String email, Date lastUpdatedDate, String lastUpdatedBy,
-                    int salary, int dept_id) {
+                    int salary, int deptID) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.designation = designation;
@@ -163,7 +166,7 @@ public class Employee {
         this.lastUpdatedDate = lastUpdatedDate;
         this.lastUpdatedBy = lastUpdatedBy;
         this.salary = salary;
-        this.dept_id = dept_id;
+        this.deptID = deptID;
     }
 
 
@@ -182,7 +185,7 @@ public class Employee {
                 ", last_updated_date=" + lastUpdatedDate +
                 ", last_updated_by='" + lastUpdatedBy + '\'' +
                 ", salary=" + salary +
-                ", dept_id=" + dept_id +
+                ", dept_id=" + deptID +
                 '}';
     }
 }
